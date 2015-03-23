@@ -37,4 +37,6 @@ describe "the add new user process" do
     click_on "Create Account"
     expect(page).to have_content "problem"
   end
+
+
 end

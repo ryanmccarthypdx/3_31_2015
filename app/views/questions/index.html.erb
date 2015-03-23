@@ -2,7 +2,7 @@
 
 <% if @questions.all.any? %>
   <ul>
-    <%= @questions.each do |question|%>
+    <% @questions.each do |question|%>
       <li><%= question.title %></li>
   </ul>
     <% end %>
@@ -11,3 +11,6 @@
   There are no questions yet!
 </p>
 <% end %>
+
+<h2>Ask a new question:</h2>
+<%= render 'form' %>
