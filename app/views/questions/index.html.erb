@@ -1,0 +1,13 @@
+<h1>Hello <%= current_user.email %>!</h1>
+
+<% if @questions.all.any? %>
+  <ul>
+    <%= @questions.each do |question|%>
+      <li><%= question.title %></li>
+  </ul>
+    <% end %>
+<% else %>
+<p>
+  There are no questions yet!
+</p>
+<% end %>
