@@ -16,4 +16,11 @@ describe User do
     end
   end
 
+  describe '#create' do
+    it "sends email to user on successful account creation" do
+      user = FactoryGirl.create(:user)
+      ActionMailer::Base.deliveries.last.to.should eq [user.email]
+    end
+  end
+
 end

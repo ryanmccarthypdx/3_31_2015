@@ -38,5 +38,4 @@ describe "the add new user process" do
     expect(page).to have_content "problem"
   end
 
-
 end
