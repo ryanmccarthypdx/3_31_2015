@@ -12,11 +12,29 @@ describe "the add new user process" do
     click_on "Create an Account"
     fill_in "Email", :with => "lee@fool.com"
     fill_in "Password", :with => "lee"
-    fill_in "Confirm password", :with => "lee"
+    fill_in "Password confirmation", :with => "lee"
     click_on "Create Account"
     expect(page).to have_content "Success!"
   end
 
+  it "throws errors if user misenters information" do
+    visit root_path
+    click_on "Create an Account"
+    fill_in "Email", :with => "lee@fool.com"
+    fill_in "Password", :with => "lee"
+    fill_in "Password confirmation", :with => "ass"
+    click_on "Create Account"
+    expect(page).to have_content "problem"
+  end
 
-
+  it "throws errors if non-unique name" do
+    FactoryGirl.create(:user)
+    visit root_path
+    click_on "Create an Account"
+    fill_in "Email", :with => "lee@fool.com"
+    fill_in "Password", :with => "lee"
+    fill_in "Password confirmation", :with => "lee"
+    click_on "Create Account"
+    expect(page).to have_content "problem"
+  end
 end
