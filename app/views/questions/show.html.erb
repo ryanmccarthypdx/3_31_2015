@@ -15,7 +15,12 @@
 <% if @responses.any? %>
   <ul>
   <% @responses.each do |response| %>
-    <li><%= response.content %></li>
+    <li><%= response.content %>
+      <% if response.user_id == current_user.id %>
+      <%= link_to "Edit", edit_question_response_path(@question, response) %><%= link_to "Delete", question_response_path(@question, response),
+                                                                                              :data => {:confirm => "oh NOOOOO",
+                                                                                                        :method => "delete"}%></li>
+      <% end %>
   <% end %>
   </ul>
 <% end %>
