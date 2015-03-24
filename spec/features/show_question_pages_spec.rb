@@ -4,10 +4,7 @@ describe "show a question process" do
   let!(:question) { FactoryGirl.create(:question) }
 
   before do
-    visit root_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_on "Log in"
+    sign_in(user)
   end
 
   it "will show a the title and body of a question" do
