@@ -2,6 +2,14 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <h1>Yak Overflow!</h1>
+      <div class="navbar-text navbar-left">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home ", questions_path %></li>
+          <li><%= link_to " Log out", log_out_path %></li>
+        </ul>
+      </div>
     </div>
+      <p class="navbar-text navbar-right">Signed in as <%= current_user.email %></p>
+
   </div>
 </nav>
