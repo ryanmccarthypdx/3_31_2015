@@ -1,12 +1,23 @@
+<%= render 'layouts/navbar' %>
+
 <h1><%= @question.title %></h1>
+
 <p>
   <%= @question.body %>
 </p>
 <% if @question.user_id == current_user.id %>
-  <p><%= link_to "Edit", edit_question_path(@question) %></p>
-  <p><%= link_to "Delete", question_path(@question),
+  <a><%= link_to "Edit", edit_question_path(@question) %></a>
+  <a><%= link_to "Delete", question_path(@question),
               :data => {:confirm => "Are you sure?",
-                        :method => "delete"}%></p>
+                        :method => "delete"}%></a>
+<% end %>
+
+<% if @responses.any? %>
+  <ul>
+  <% @responses.each do |response| %>
+    <li><%= response.content %></li>
+  <% end %>
+  </ul>
 <% end %>
 
 <%= render 'responses/form' %>
