@@ -6,19 +6,20 @@ describe "edit/delete a question process" do
     sign_in(user)
   end
 
-  it "will show the edit button if user was the one who created the question" do
+  it "will show the edit button if user was the one who created the question", js: true do
     question = FactoryGirl.create(:question, :user_id => user.id)
     visit questions_path
     expect(page).to have_content("Edit")
   end
 
-  it "will not show the edit/delete links if the user isn't the creator of that question" do
-    question = FactoryGirl.create(:question)
+  it "will not show the edit/delete links if the user isn't the creator of that question", js: true do
+    wrong_user = FactoryGirl.create(:user, :email => "wrong_user@yahoo.com")
+    question = FactoryGirl.create(:question, :user_id => wrong_user.id)
     visit questions_path
     expect(page).to have_no_content("Edit")
   end
 
-  it "will open the edit form" do
+  it "will open the edit form", js: true do
     question = FactoryGirl.create(:question, :user_id => user.id)
     visit questions_path
     click_on "Edit"
@@ -36,7 +37,7 @@ describe "edit/delete a question process" do
     expect(page).to have_content("Lee kisses yaks on the mouth")
   end
 
-  it "will edit the title of a question" do
+  it "will edit the title of a question", js: true do
     question = FactoryGirl.create(:question, :user_id => user.id)
     visit questions_path
     click_on "Edit"
