@@ -24,7 +24,7 @@ describe "edit/delete a question process" do
     visit question_path(question)
     click_on "Edit"
     fill_in "Body", :with => "Lee kisses yaks on the mouth"
-    click_on "Ask question"
+    click_on "Update Question"
     visit question_path(question)
     expect(page).to have_content("Lee kisses yaks on the mouth")
   end
@@ -34,7 +34,7 @@ describe "edit/delete a question process" do
     visit question_path(question)
     click_on "Edit"
     fill_in "Title", :with => "How many yaks does Lee kiss?"
-    click_on "Ask question"
+    click_on "Update Question"
     expect(page).to have_content("How many yaks does Lee kiss?")
   end
 

@@ -1,1 +1,2 @@
-$('#shown_question_<%= @question.id %>').hide().after('<span id="edit_form"><%= j render "form" %></span>')
+$('#shown_question_<%= @question.id %>').after('<span class="edit_form"><%= j render "form" %></span>')
+$('#shown_question_<%= @question.id %>').remove();

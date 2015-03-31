@@ -5,7 +5,6 @@ describe "the creating question process" do
 
   before do
     sign_in(user)
-    save_screenshot("screenshot.png")
   end
 
   it "allows a user to create a question", js: true do
@@ -17,7 +16,7 @@ describe "the creating question process" do
     visit questions_path
     fill_in "Title", :with => "Ryan's"
     fill_in "Body", :with => "Face"
-    click_on "Ask question"
+    click_on "Create Question"
     expect(page).to have_content "Ryan's"
   end
 end
