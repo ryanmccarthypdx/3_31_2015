@@ -46,7 +46,7 @@ describe "edit/delete a question process" do
     expect(page).to have_content("How many yaks does Lee kiss?")
   end
 
-  it "will delete a question" do
+  it "will delete a question", js: true do
     question = FactoryGirl.create(:question, :user_id => user.id)
     visit questions_path
     click_on "Delete"

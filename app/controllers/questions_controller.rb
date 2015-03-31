@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   def edit
     @question = Question.find(params[:id])
     respond_to do |format|
-      format.html 
+      format.html
       format.js
     end
   end
@@ -30,10 +30,13 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.destroy
       flash[:notice] = "Question Removed"
-      redirect_to questions_path
+      respond_to do |format|
+        format.html { redirect_to questions_path }
+        format.js
+      end
     else
       flash[:alert] = "Horrible failure"
-    redirect_to question_path(@question)
+      redirect_to questions_path
     end
   end
 
