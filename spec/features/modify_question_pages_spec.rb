@@ -6,12 +6,18 @@ describe "edit/delete a question process" do
     sign_in(user)
   end
 
-  it "will open the edit form" do
+  it "will show the edit button if user was the one who created the question" do
     question = FactoryGirl.create(:question, :user_id => user.id)
-    visit question_path(question)
-    click_on "Edit"
-    expect(page).to have_content("Title")
+    visit questions_path
+    expect(page).to have_content("Edit")
   end
+
+  # it "will open the edit form" do
+  #   question = FactoryGirl.create(:question, :user_id => user.id)
+  #   visit questions_path
+  #   click_on "Edit"
+  #   expect(page).to have_content("Title")
+  # end
 
   it "will edit the text of a question" do
     question = FactoryGirl.create(:question, :user_id => user.id)
