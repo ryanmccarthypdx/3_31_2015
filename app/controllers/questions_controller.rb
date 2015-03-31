@@ -45,7 +45,10 @@ class QuestionsController < ApplicationController
     @question.user_id = current_user.id
     if @question.save
       flash[:notice] = "Question submitted!"
-      redirect_to questions_path
+      respond_to do |format|
+        format.html { redirect_to questions_path }
+        format.js
+      end
     else
       flash[:alert] = "Something went wrong!"
       render :new

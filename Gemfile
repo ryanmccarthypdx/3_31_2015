@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip', '~> 4.2'
 gem 'bcrypt-ruby', '~> 3.1.5', require: "bcrypt"
 
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -22,4 +23,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'letter_opener'
+  gem 'poltergeist'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
