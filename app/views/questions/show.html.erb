@@ -5,12 +5,7 @@
 <p>
   <%= @question.body %>
 </p>
-<% if @question.user_id == current_user.id %>
-  <a><%= link_to "Edit", edit_question_path(@question) %></a>
-  <a><%= link_to "Delete", question_path(@question),
-              :data => {:confirm => "Are you sure?",
-                        :method => "delete"}%></a>
-<% end %>
+
 
 <% if @responses.any? %>
   <ul>
