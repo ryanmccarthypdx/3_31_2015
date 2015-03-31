@@ -7,13 +7,20 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
       flash[:notice] = "Successfully Updated!"
-      redirect_to questions_path
+      respond_to do |format|
+        format.html { redirect_to questions_path }
+        format.js
+      end
     else
       render:edit
     end

@@ -12,12 +12,12 @@ describe "edit/delete a question process" do
     expect(page).to have_content("Edit")
   end
 
-  # it "will open the edit form" do
-  #   question = FactoryGirl.create(:question, :user_id => user.id)
-  #   visit questions_path
-  #   click_on "Edit"
-  #   expect(page).to have_content("Title")
-  # end
+  it "will open the edit form" do
+    question = FactoryGirl.create(:question, :user_id => user.id)
+    visit questions_path
+    click_on "Edit"
+    expect(page).to have_content("Title")
+  end
 
   it "will edit the text of a question" do
     question = FactoryGirl.create(:question, :user_id => user.id)
