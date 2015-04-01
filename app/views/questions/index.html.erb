@@ -3,7 +3,7 @@
 <h1>Hello <%= current_user.email %>!</h1>
 
 <ul id="questions">
-  <% @questions.each do |question|%>
+  <% @questions.each do |question| %>
     <%= render question %>
   <% end %>
 </ul>

@@ -1,0 +1,11 @@
+<li id="shown_response_<%= response.id %>">
+  <%= response.content %>
+  <% if response.user_id == current_user.id %>
+   |
+  <%= link_to "Edit", edit_question_response_path(@question, response), remote: true %>
+   |
+   <%= link_to "Delete", question_response_path(@question, response),
+                :data => {:confirm => "oh NOOOOO",
+                          :method => "delete"}%>
+  <% end %>
+</li>

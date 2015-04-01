@@ -8,10 +8,13 @@ class ResponsesController < ApplicationController
     @response = Response.find(params[:id])
     if @response.destroy
       flash[:notice] = "Response Removed"
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html { redirect_to question_path(@question) }
+        format.js
+      end
     else
-      flash[:alert] = "Something Went Wrong"
-      redirect_to question_path(@question)
+      flash[:alert] = "Something Went Horribly Wrong"
+      redirect_to questions_path
     end
   end
 
@@ -22,16 +25,23 @@ class ResponsesController < ApplicationController
     @response.question_id = @question.id
     if @response.save
       flash[:notice] = "Thanks for answering!"
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html { redirect_to question_path(@question) }
+        format.js
+      end
     else
       flash[:alert] = "Something went Wrong!"
-      redirect_to question_path(@question)
+      redirect_to questions_path
     end
   end
 
   def edit
     @question = Question.find(params[:question_id])
     @response = Response.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update

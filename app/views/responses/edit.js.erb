@@ -1,0 +1,3 @@
+$('#shown_response_<%= @response.id %>').after('<span class="edit_form"><%= j render "form" %></span>')
+$('#shown_response_<%= @response.id %>').remove();
+$('#new_response_form').hide();

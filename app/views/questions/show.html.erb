@@ -7,17 +7,15 @@
 </p>
 
 
-<% if @responses.any? %>
-  <ul>
+
+  <ul id="responses">
   <% @responses.each do |response| %>
-    <li><%= response.content %>
-      <% if response.user_id == current_user.id %>
-      <%= link_to "Edit", edit_question_response_path(@question, response) %><%= link_to "Delete", question_response_path(@question, response),
-                                                                                              :data => {:confirm => "oh NOOOOO",
-                                                                                                        :method => "delete"}%></li>
-      <% end %>
+    <%= render response %>
   <% end %>
   </ul>
-<% end %>
 
-<%= render 'responses/form' %>
+
+<div id="new_response_form">
+  <h4>Respond to this question:</h4>
+  <%= render 'responses/form' %>
+</div>
